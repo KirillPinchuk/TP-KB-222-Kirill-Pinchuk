@@ -6,8 +6,8 @@ def FindD(a, b, c):
         return "No roots"
     
     elif D == 0:
-        x1 = -b / (2*a)
-        return x1
+        x = -b / (2*a)
+        return x
     
     else: D > 0
     x1 = (-b + math.sqrt(D)) / (2 * a)
