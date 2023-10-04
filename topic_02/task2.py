@@ -16,18 +16,15 @@ def division(a, b):
 
 if op == "+":
     result = sum(a,b)
-    print (result)
     
 elif op == "-":
     result = minus(a,b)
-    print (result)
  
 elif op == "*":
     result = multiplication(a,b)
-    print (result)
     
 elif op == "/":
     result = division(a,b!=0)
-    print (result)
 else:
     print("Invalid operation")
+print(result)
