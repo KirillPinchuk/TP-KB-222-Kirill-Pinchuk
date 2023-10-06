@@ -2,7 +2,7 @@ def InsterToPosition(sorted_list, NewValue):
     position = 0
     for i in sorted_list:
      if NewValue < i:
-      position +1
+      position =+1
      return position
 list = ["aa", "ee", "zz"]  
 NewValue = input("New value: ")
