@@ -21,11 +21,6 @@ def Value(prompt):
             print("Invalid input. Please enter a valid integer")
 
 while True:
-    exit = input("Do you want to exit the program? (yes/no): ")
-    if exit.lower() == "yes":
-        print("Quitting the program")
-        break
-
     a = Value("Enter a: ")
     b = Value("Enter b: ")
     op = input("Operation (+, -, *, /)")
@@ -45,3 +40,8 @@ while True:
         result = division(a, b)
 
         print("Result =", result)
+
+    exit = input("Do you want to exit the program? (yes/no): ")
+    if exit.lower() == "yes":
+        print("Quitting the program")
+        break
