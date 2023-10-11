@@ -25,6 +25,10 @@ while True:
     b = Value("Enter b: ")
     op = input("Operation (+, -, *, /)")
 
+    if op not in ("+", "-", "*", "/"):
+        print("Invalid operation. Please  +, -, *, /")
+        continue
+
     if op == "+":
         result = sum(a, b)
     elif op == "-":
@@ -35,10 +39,6 @@ while True:
         result = division(a, b)
 
     print("Result =", result)
-
-    if op not in ("+", "-", "*", "/"):
-        print("Invalid operation. Please  +, -, *, /")
-        continue
 
     exit = input("Do you want to exit the program? (yes/no): ")
     if exit.lower() == "yes":
