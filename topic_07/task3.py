@@ -1,68 +1,63 @@
+import logging
+
 class Calculator:
-    def __init__(self, a, b):
-        self._a = a
-        self._b = b
-        self._result = 0
-    
-    @property 
-    def a(self):
-        return self._a
-    
-    @property
-    def b(self):
-        return self._b
-    
-    @a.setter
-    def a(self, new_a):
-             self._a = new_a
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
 
-        
-    @b.setter
-    def b(self, new_b):
-             self._b = new_b
+    def sum(self, a, b):
+        return a + b
 
-    @property
-    def result(self):
-        return self._result
+    def minus(self, a, b):
+        return a - b
 
-    def add(self):
-        self._result = self._a + self._b
+    def multiplication(self, a, b):
+        return a * b
 
-    def subtract(self):
-        self._result = self._a - self._b
+    def division(self, a, b):
+        if b == 0:
+            raise ZeroDivisionError("Division by zero is not allowed")
+        return a / b
 
-    def multiply(self):
-        self._result = self._a * self._b
+    def run(self):
+        while True:
+            a = self.get_value("Enter a: ")
+            b = self.get_value("Enter b: ")
+            op = self.get_operation()
 
-    def divide(self):
-        if self._b == 0:
-            self._result = "Error "
-        else:
-            self._result = self._a / self._b
+            if op == "+":
+                result = self.sum(a, b)
+            elif op == "-":
+                result = self.minus(a, b)
+            elif op == "*":
+                result = self.multiplication(a, b)
+            elif op == "/":
+                result = self.division(a, b)
 
-def get_calculator():
-    a = float(input("Enter number a: "))
-    b = float(input("Enter number b: "))
-    return Calculator(a, b)
+            print("Result =", result)
+            self.logger.info(f"Operation: {a} {op} {b} = {result}")
 
-def main():
- while True:
-    calculator = get_calculator()
-    operation = input("Operation (+, -, *, /) ")
+            exit_program = input("Do you want to exit the program? (yes/no): ")
+            if exit_program.lower() == "yes":
+                print("Quitting the program")
+                break
 
-    if operation == "+":
-        calculator.add()
-    elif operation == "-":
-        calculator.subtract()
-    elif operation == "*":
-        calculator.multiply()
-    elif operation == "/":
-        calculator.divide()
-    else:
-        print("Invalid operation")
-        break
+    def get_value(self, prompt):
+        while True:
+            try:
+                return int(input(prompt))
+            except ValueError:
+                print("Invalid input. Please enter a valid integer")
 
-    print("Result =", calculator.result)
+    def get_operation(self):
+        while True:
+            op = input("Operation (+, -, *, /): ")
+            if op in ("+", "-", "*", "/"):
+                return op
+            else:
+                print("Invalid operation. Please use +, -, *, /")
+
 
 if __name__ == "__main__":
-    main()
+    logging.basicConfig(filename='calc.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+    calculator = Calculator()
+    calculator.run()
