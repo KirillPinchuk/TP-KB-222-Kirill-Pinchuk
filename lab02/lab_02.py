@@ -84,7 +84,7 @@ def updateElement(student_list):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python script.py <file_name.csv>")
+        print("Python script.py <file_name.csv>")
         sys.exit(1)
     
     file_name = sys.argv[1]
